@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>To-Do List</h1>
+
+    <!-- INPUT -->
+    <div class="input-container">
+      <input type="text" id="taskInput" placeholder="Escribí una tarea...">
+      <button id="addBtn">Agregar</button>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filters">
+      <button data-filter="all">Todas</button>
+      <button data-filter="pending">Pendientes</button>
+      <button data-filter="done">Completadas</button>
+    </div>
+
+    <!-- LISTA -->
+    <ul id="taskList"></ul>
+
+    <!-- CONTADOR -->
+    <div class="counter">
+      <span id="total">Total: 0</span>
+      <span id="pending">Pendientes: 0</span>
+      <span id="done">Hechas: 0</span>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
