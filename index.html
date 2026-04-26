@@ -7,34 +7,30 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <div class="container">
-
+    <p class="eyebrow">Organizador personal</p>
     <h1>To-Do List</h1>
+    <p class="subtitle">Crea tareas, filtralas y guarda el progreso en tu navegador.</p>
 
-    <!-- INPUT -->
     <div class="input-container">
-      <input type="text" id="taskInput" placeholder="Escribí una tarea...">
-      <button id="addBtn">Agregar</button>
+      <label class="sr-only" for="taskInput">Nueva tarea</label>
+      <input type="text" id="taskInput" placeholder="Escribi una tarea...">
+      <button type="button" id="addBtn">Agregar</button>
     </div>
 
-    <!-- FILTROS -->
-    <div class="filters">
-      <button data-filter="all">Todas</button>
-      <button data-filter="pending">Pendientes</button>
-      <button data-filter="done">Completadas</button>
+    <div class="filters" aria-label="Filtros de tareas">
+      <button type="button" class="is-active" data-filter="all">Todas</button>
+      <button type="button" data-filter="pending">Pendientes</button>
+      <button type="button" data-filter="done">Completadas</button>
     </div>
 
-    <!-- LISTA -->
-    <ul id="taskList"></ul>
+    <ul id="taskList" aria-live="polite"></ul>
 
-    <!-- CONTADOR -->
     <div class="counter">
       <span id="total">Total: 0</span>
       <span id="pending">Pendientes: 0</span>
       <span id="done">Hechas: 0</span>
     </div>
-
   </div>
 
   <script src="app.js"></script>
