@@ -4,7 +4,7 @@ Aplicacion de lista de tareas desarrollada con HTML, CSS y JavaScript vanilla, c
 
 ## Demo
 
-[Ver online](https://listadetareaspendientes.netlify.app)
+- Vercel: https://to-do-list-pink-five-91.vercel.app
 
 ## Vista previa
 
