@@ -1,45 +1,37 @@
-#  To-Do List
+# To-Do List
 
-Aplicación de lista de tareas desarrollada con HTML, CSS y JavaScript vanilla, utilizando localStorage para persistencia de datos.
+Aplicacion de lista de tareas desarrollada con HTML, CSS y JavaScript vanilla, con persistencia en `localStorage`.
 
----
+## Demo
 
-##  Demo en vivo
+[Ver online](https://listadetareaspendientes.netlify.app)
 
-👉 [Ver online](https://listadetareaspendientes.netlify.app)
+## Vista previa
 
----
-
-## 📸 Vista previa
-
-![Vista previa](vistaPrevia.png)
-
----
+![Vista previa](./vistaPrevia.png)
 
 ## Funcionalidades
 
 - Agregar tareas
 - Marcar tareas como completadas
 - Eliminar tareas
-- Filtrar tareas (todas / pendientes / completadas)
-- Persistencia de datos con localStorage
+- Filtrar por todas, pendientes o completadas
+- Persistencia de datos en el navegador
+- Contadores de estado
 
----
-
-## Tecnologías utilizadas
+## Tecnologias utilizadas
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla)
-
----
+- JavaScript vanilla
+- localStorage
 
 ## Aprendizajes
 
-Este proyecto me permitió practicar:
+Este proyecto me permitio practicar:
 
-- Manipulación del DOM
-- Eventos en JavaScript
-- Uso de arrays y objetos
+- Manipulacion del DOM
+- Manejo de eventos
+- Renderizado dinamico
 - Persistencia con localStorage
-- Lógica de filtrado
+- Logica de filtrado y estado
