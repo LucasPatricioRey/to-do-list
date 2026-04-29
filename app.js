@@ -1,4 +1,3 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
 
 const taskInput = document.getElementById("taskInput");
@@ -8,6 +7,22 @@ const taskList = document.getElementById("taskList");
 const totalEl = document.getElementById("total");
 const pendingEl = document.getElementById("pending");
 const doneEl = document.getElementById("done");
+
+function createTaskId() {
+  return crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+function readTasks() {
+  try {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    return Array.isArray(storedTasks) ? storedTasks : [];
+  } catch {
+    localStorage.removeItem("tasks");
+    return [];
+  }
+}
+
+let tasks = readTasks();
 
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -46,17 +61,31 @@ function renderTasks() {
     const li = document.createElement("li");
     li.className = "task-item";
 
-    li.innerHTML = `
-      <span class="task-text ${task.done ? "done" : ""}">${task.text}</span>
-      <div class="task-actions">
-        <button type="button" class="icon-btn complete-btn" data-action="toggle" data-id="${task.id}" aria-label="Marcar tarea">
-          ${task.done ? "↺" : "✓"}
-        </button>
-        <button type="button" class="icon-btn delete-btn" data-action="delete" data-id="${task.id}" aria-label="Eliminar tarea">
-          ×
-        </button>
-      </div>
-    `;
+    const taskText = document.createElement("span");
+    taskText.className = `task-text ${task.done ? "done" : ""}`;
+    taskText.textContent = task.text;
+
+    const actions = document.createElement("div");
+    actions.className = "task-actions";
+
+    const toggleButton = document.createElement("button");
+    toggleButton.type = "button";
+    toggleButton.className = "icon-btn complete-btn";
+    toggleButton.dataset.action = "toggle";
+    toggleButton.dataset.id = task.id;
+    toggleButton.setAttribute("aria-label", "Marcar tarea");
+    toggleButton.textContent = task.done ? "↺" : "✓";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "icon-btn delete-btn";
+    deleteButton.dataset.action = "delete";
+    deleteButton.dataset.id = task.id;
+    deleteButton.setAttribute("aria-label", "Eliminar tarea");
+    deleteButton.textContent = "×";
+
+    actions.append(toggleButton, deleteButton);
+    li.append(taskText, actions);
 
     taskList.appendChild(li);
   });
@@ -70,7 +99,7 @@ function addTask() {
   if (!text) return;
 
   tasks.push({
-    id: crypto.randomUUID(),
+    id: createTaskId(),
     text,
     done: false
   });
@@ -137,9 +166,9 @@ document.querySelectorAll(".filters button").forEach(button => {
 });
 
 tasks = tasks.map(task => ({
-  id: task.id || crypto.randomUUID(),
-  text: task.text,
-  done: task.done
+  id: task.id || createTaskId(),
+  text: String(task.text || ""),
+  done: Boolean(task.done)
 }));
 
 saveTasks();
