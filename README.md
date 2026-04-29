@@ -35,3 +35,7 @@ Este proyecto me permitio practicar:
 - Renderizado dinamico
 - Persistencia con localStorage
 - Logica de filtrado y estado
+
+## Licencia
+
+MIT
